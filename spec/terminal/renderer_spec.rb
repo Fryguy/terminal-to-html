@@ -150,7 +150,7 @@ describe Terminal::Renderer do
     it "\\e[K correctly clears all previous parts of the string" do
       raw = "remote: Compressing objects:   0% (1/3342)\e[K\rremote: Compressing objects:   1% (34/3342)"
 
-      expect(render(raw)).to eql("remote: Compressing objects:   1% (34&#47;3342)")
+      expect(render(raw)).to eql("remote: Compressing objects:   1% (34/3342)")
     end
 
     it "collapses many spans of the same color into 1" do
@@ -162,7 +162,7 @@ describe Terminal::Renderer do
     it "escapes HTML" do
       raw = "hello <strong>friend</strong>"
 
-      expect(render(raw)).to eql("hello &lt;strong&gt;friend&lt;&#47;strong&gt;")
+      expect(render(raw)).to eql("hello &lt;strong&gt;friend&lt;/strong&gt;")
     end
 
     it "escapes HTML in color codes" do
